@@ -1,2 +1,17 @@
 # jspdf-autotable-playground
 From HTML document generate a PDF usign jsPDF and autotable plugin
+
+    - Uses semanticui, fakejs, jspdf, jspdfautotable
+
+## Business rules:  
+    - Chained order of activities/subactivities: Store Visit -> Opportunities -> Tactics -> Best Practices
+    - A **Store** visit may have 1:N number of *Opportunities*
+    - An **Opportunity** may have 1:N *Tactics*
+    - A **Tactic** may have 1:N *Best *Practice*
+    - Every Opportunity may contain a **Note**
+  
+  
+    Additionally a Store visit may have 1:N **Period and Quartely Activities** with Notes
+    A **General Notes** section will be placed at the end
+  
+  >All content is automatically generated using fakerjs. Min and Max number of values to display should be adjusted in pdf_play_table.js file

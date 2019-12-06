@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>Store Visits</title>
+  <meta content="Store Visits Report" name="description">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=false" />
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="semanticui/semantic.min.css" />
+</head>
+
+<body>
+<div id="message" class="ui small info message transition">
+  <i class="close icon"></i>
+  <div class="header">
+    <i class="arrow alternate circle right icon"></i>
+    Business rules:
+  </div>
+  <ul class="list">
+    <li>Chained order of activities/subactivities: Store Visit -> Opportunities -> Tactics -> Best Practices</li>
+    <li>A <b>Store visit</b> may have 1:N number of <i>Opportunities</i></li>
+    <li>An <b>Opportunity</b> may have 1:N <i>Tactics</i></li>
+    <li>A <b>Tactic</b> may have 1:N <i>Best Practice</i></li>
+    <li>Every Opportunity may contain a Note</li>
+  </ul><br />
+  <ul class="list">
+    <li>Additionally a <b>Store visit</b> may have 1:N <i>Period and Quartely Activities</i> with Notes</li>    
+    <li>A <b>General Notes</b> section will be placed at the end</li>
+  </ul></br>
+  <b><p>**All content is automatically generated using fakerjs. <br/>Min and Max number of values to display should be adjusted in pdf_play_table.js file</p></b>
+</div>
+  <a id="pdf" style="left:0.5em;top:0.3em;" class="ui large green tag label">
+    <i class="file pdf outline icon"></i>
+    Get PDF
+  </a>
+  <div style="width:100%;padding: 10px;">
+    <div class="ui tiny tablet unstackable steps">
+      <div class="step">
+        <i class="briefcase icon"></i>
+        <div class="content">
+          <div class="title">Store Visit</div>
+          <div id="sname" class="description"></div>
+        </div>
+      </div>
+      <div class="step">
+        <i class="flag checkered icon"></i>
+        <div class="content">
+          <div class="title">Objective</div>
+          <div id="objective" class="description"></div>
+        </div>
+      </div>
+      <div class="step">
+        <i class="calendar alternate icon"></i>
+        <div class="content">
+          <div class="title">Visit Date</div>
+          <div id="visitdate" class="description"></div>
+        </div>
+      </div>
+      <div class="step">
+        <i class="info circle icon"></i>
+        <div class="content">
+          <div class="title">Status</div>
+          <div id="status" class="description"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ui stacked segments">
+    <div class="ui orange segment">
+      <h4 class="ui header">
+        <i class="fire icon"></i>
+        <div class="content">Opportunities</div>
+      </h4>
+      <div id="kpi_opscontainer" class="ui styled fluid accordion"></div>
+    </div>
+
+    <div class="ui orange segment">
+      <div class="ui styled fluid accordion">
+        <div class="title">
+          <h4 class="ui header"><i class=" tasks icon"></i>Period and Quarterly Activities</h4>
+        </div>
+        <div id="frequency" class="content"></div>
+      </div>
+    </div>
+
+    <div class="ui orange segment">
+      <div class="ui styled fluid accordion">
+        <div class="title">
+          <h4 class="ui header"><i class="edit outline icon"></i>General Notes</h4>
+        </div>
+        <div class="content">
+          <table class="ui small fixed selectable table" id="visitNotes">
+            <thead style="display: none;">
+              <tr>
+                <th>General Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tortor eros, rutrum finibus purus a,
+                  vulputate ultricies velit. Curabitur quis est in diam iaculis cursus. Integer vehicula eget turpis a
+                  tincidunt. Integer bibendum neque at dui aliquet rutrum. Praesent molestie, quam sed convallis
+                  faucibus, libero elit tincidunt sem, in consectetur felis ligula eget ante. Nullam quis dui a sapien
+                  auctor sagittis. Sed sit amet odio eu magna ultrices consequat quis sit amet augue. Fusce hendrerit
+                  arcu a ex convallis fermentum. Nullam eget odio tristique, lacinia tellus a, porttitor sem. Nulla
+                  malesuada tincidunt tellus sit amet dapibus. Pellentesque varius lorem eu nisl dignissim lobortis.
+                  Phasellus et tincidunt dui, id fringilla quam. Nunc ultrices venenatis lectus nec consectetur. Aenean
+                  pulvinar est pretium ligula mattis, vel pulvinar purus tristique.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" language="javascript" src='jquery1.11.3.min.js'></script>
+  <script type="text/javascript" language="javascript" src="semanticui/semantic.min.js"></script>
+  <script type="text/javascript" language="javascript" src='jspdf.debug.js'></script>
+  <script type="text/javascript" language="javascript" src='jspdf.plugin.autotable.js'></script>
+  <script type="text/javascript" language="javascript" src='faker.min.js'></script>
+  <script type="text/javascript" language="javascript" src='pdf_play_table.js'></script>
+  <script>
+    $(document).ready(function () {
+      loadData();
+    }); //-> end document ready
+  </script>
+</body>
+
+</html>
