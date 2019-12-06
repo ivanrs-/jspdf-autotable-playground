@@ -20,3 +20,5 @@ This is a playground test, using certain business rules for the document generat
   >All content is automatically generated using fakerjs. Min and Max number of values to display should be adjusted in pdf_play_table.js file
 
   ![header image](https://github.com/ivanrs-/jspdf-autotable-playground/blob/master/preview1.png?raw=true)
+
+  ![header image](https://github.com/ivanrs-/jspdf-autotable-playground/blob/master/preview2.png?raw=true)

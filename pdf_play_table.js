@@ -2,71 +2,59 @@ let opportunities;
 let tactics = [];
 let practices = [];
 let frequencies = [];
-var factivities = [];
+let factivities = [];
 let logo_base64Img = "data:image/jpeg;base64,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";
 
 function loadData() {
     $('.ui.accordion').accordion();
 
     // Dummy to create Opportunities table
-    // Min 
+    // Generate a random number from 2-5 to be used as number of opoortunities
     opportunities = faker.random.number({
         'min': 2,
         'max': 5
     });
+
+    // Dummy creation of tactics and best practices
     buildOpsTables(opportunities);
 
-    // Dummy to create opportunities table
+    // Dummy creation of frequency activities
     buildFreqTables();
 }
 function buildOpsTables(opportunities) {
 
-    for (var j = 1; j <= opportunities; j++) {
+    for (let j = 1; j <= opportunities; j++) {
 
-        var note = (j == 1 || j == 3) ? '<span class="ui orange ribbon label">Note:</span><span>' + faker.lorem.paragraph() + '</span>' : '';
+        let note = (j == 1 || j == 3) ? '<span class="ui orange ribbon label">Note:</span><span>' + faker.lorem.paragraph() + '</span>' : '';
 
-        var x = '<div class="opcontainer"><div class="title opportunity' + j + '"><i class="arrow alternate circle right outline icon"></i>' +
+        let x = '<div class="opcontainer"><div class="title opportunity' + j + '"><i class="arrow alternate circle right outline icon"></i>' +
             faker.lorem.paragraph() + '</div>' +
             '<div id="opportunity' + j + '" class="content">' + note + '</div></div>';
 
         $("#kpi_opscontainer").append(x);
 
-        // GET TACTICS FROM EACH OBJECTIVE!!
+        // Generate Tactics for each opportunity
+        // for this playground I have put 3 only 
         tactics.push({
-            oid: j,
-            id: 1,
-            text: faker.random.number({
-                'min': 1,
-                'max': 5
-            })
+            oid: j,id: 1,text: faker.random.number({'min': 1,'max': 5})
         });
         tactics.push({
-            oid: j,
-            id: 2,
-            text: faker.random.number({
-                'min': 6,
-                'max': 10
-            })
+            oid: j,id: 2,text: faker.random.number({'min': 6,'max': 10})
         });
         tactics.push({
-            oid: j,
-            id: 3,
-            text: faker.random.number({
-                'min': 6,
-                'max': 10
-            })
+            oid: j,id: 3,text: faker.random.number({'min': 11,'max': 15})
         });
 
     }
 
     tactics.forEach(function (tactic) {
-        var t = '<table class="ui small fixed selectable table opportunity' + tactic.oid + '"" id="tactic' + tactic.id + '">' +
+        let t = '<table class="ui small fixed selectable table opportunity' + tactic.oid + '"" id="tactic' + tactic.id + '">' +
             '<thead><tr><th>Tactic: ' + tactic.text + '<br/><small>{Practices Selected}</small></th></tr></thead>' +
             '<tbody></tbody></table>'
 
         $("#opportunity" + tactic.oid).append(t);
 
-        // GET PRACTICES FROM EACH TACTIC!
+        // Generate Best Practices for each Tactic
         practices.push({
             tacticid: tactic.id,
             id: faker.random.number({
@@ -75,32 +63,29 @@ function buildOpsTables(opportunities) {
             }),
             text: " * " + faker.lorem.paragraph()
         });
-
-
     });
 
     practices.forEach(function (practice) {
-        var p = '<tr><td>' + practice.text + '</td></tr>';
+        let p = '<tr><td>' + practice.text + '</td></tr>';
         $("#tactic" + practice.tacticid + "> tbody").append(p);
 
     });
 
 }
 
-
 function buildFreqTables() {
     // Dummy to create opportunities table
     // SHOULD BE AN ARRAY OF ONE ELEMENT
-    var frequencies = [];
+    let frequencies = [];
     frequencies.push({
         id: 1,
         text: faker.lorem.paragraph()
     });
 
-    var n = '<span class="ui orange ribbon label">Note:</span><span>' + faker.lorem.paragraph() + '</span>';
+    let n = '<span class="ui orange ribbon label">Note:</span><span>' + faker.lorem.paragraph() + '</span>';
     $("#frequency").append(n);
     frequencies.forEach(function (frequency) {
-        var t = '<table class="ui small fixed selectable table" id="factivity">' +
+        let t = '<table class="ui small fixed selectable table" id="factivity">' +
             '<thead><tr><th>Activity</th></tr></thead>' +
             '<tbody></tbody></table>'
 
@@ -135,7 +120,7 @@ function buildFreqTables() {
     });
 
     factivities.forEach(function (activity) {
-        var a = '<tr><td><div class="ui ribbon label"><i class="dot circle outline icon"></i></div>' + activity.text + '</td></tr>';
+        let a = '<tr><td><div class="ui ribbon label"><i class="dot circle outline icon"></i></div>' + activity.text + '</td></tr>';
         $("#factivity > tbody").append(a);
     });
 
@@ -143,47 +128,32 @@ function buildFreqTables() {
 
 
 document.getElementById('pdf').onclick = function () {
-    var doc = new jsPDF({
+    let doc = new jsPDF({
         orientation: 'p',
         format: 'letter'
     });
-    var height = doc.internal.pageSize.height;
-    var totalPagesExp = "{total_pages_count_string}";
-    var currentpage = 0;
+    let height = doc.internal.pageSize.height;
+    let totalPagesExp = "{total_pages_count_string}";
+    let currentpage = 0;
 
-    var footer = function (data) {
-        //var str = "Page " + totalPagesExp;
-        // Total page number plugin only available in jspdf v1.0+
-        //if (typeof doc.putTotalPages === 'function') {
+    let footer = function (data) {
+
         if (currentpage < doc.internal.getNumberOfPages()) {
             str = totalPagesExp;
             // str = str + " of " + doc.internal.getNumberOfPages();
             currentpage = doc.internal.getNumberOfPages();
             doc.setFontSize(10);
-            var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
+            let pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
             doc.text(str, 200, pageHeight - 10); //data.settings.margin.left
         }
 
-
-        //}
-
-
-        /*if (currentpage < doc.internal.getNumberOfPages()) {
-
-            doc.setFontSize(10);
-            doc.setFontStyle('normal');
-            var pageHeight = doc.internal.pageSize.height || doc.internal.pageSize.getHeight();
-            var str = "Page " + totalPagesExp;
-            doc.text(str, 258, pageHeight  - 7);
-            currentpage = doc.internal.getNumberOfPages();
-        }*/
     };
 
     doc.setProperties({
-        'title': 'DM Store Visit Opportunities Summary',
-        'subject': 'Tactics / Best Practices',
-        'author': 'Ivan Ramos <ivan.ramos@autozone.com>',
-        'creator': 'Ivan Ramos <ivan.ramos@autozone.com>'
+        'title': 'Store Visit Opportunities Summary',
+        'subject': 'Tactics & Best Practices',
+        'author': 'Ivan RS <rs.jivan@gmail.com>',
+        'creator': 'Ivan RS <rs.jivan@gmail.com>'
     });
 
     doc.setFont("helvetica");
@@ -191,11 +161,11 @@ document.getElementById('pdf').onclick = function () {
     doc.setTextColor(40);
     doc.setFontStyle('bold');
     doc.addImage(logo_base64Img, 'JPEG', 180, 5, 16, 16);
-    doc.text("DM Store Visit Summary", 7, 10);
+    doc.text("Store Visit Summary", 7, 10);
     doc.setFontStyle('normal');
     doc.setFontSize(11);
     doc.setTextColor(0);
-    doc.text("Store # 1234 | Visit Date: 01/01/2018  |  Status: Completed", 7, 15);
+    doc.text("Store # 1234 | Visit Date: MM/DD/YYYY  |  Status: Completed", 7, 15);
     doc.text("Visit Objective: visit objective description .....", 7, 20);
     doc.setFontSize(15);
     doc.setTextColor(40);
@@ -208,21 +178,21 @@ document.getElementById('pdf').onclick = function () {
     doc.setFontSize(10);
     doc.setTextColor(0);
     /* ================================================================= */
-    var starty;
-    var flag = 0;
+    let starty;
+    let flag = 0;
 
-    var opportunities = 2;
+    let opportunities = 2;
 
-    var opColumns = [{
+    let opColumns = [{
         title: "Dummy",
         dataKey: "dummy"
     }];
-    for (var i = 1; i <= opportunities; i++) {
-        var opData = [];
-        var opTitle = $("div.title.opportunity" + i).text();
+    for (let i = 1; i <= opportunities; i++) {
+        let opData = [];
+        let opTitle = $("div.title.opportunity" + i).text();
         starty = (i == 1) ? 38.7 : doc.autoTable.previous.finalY + 11.5;
         doc.setFontStyle('bold');
-        var note = (i == 1 || i == 3) ? faker.lorem.paragraph() : null;
+        let note = (i == 1 || i == 3) ? faker.lorem.paragraph() : null;
 
         opData.push({
             dummy: opTitle
@@ -270,7 +240,7 @@ document.getElementById('pdf').onclick = function () {
 
         $("table.opportunity" + i).each(function () {
 
-            var ops = doc.autoTableHtmlToJson(this);
+            let ops = doc.autoTableHtmlToJson(this);
 
             doc.autoTable(ops.columns, ops.data, {
                 addPageContent: footer,
@@ -319,12 +289,12 @@ document.getElementById('pdf').onclick = function () {
     doc.setFontSize(10);
     doc.setTextColor(0);
 
-    var fColumns = [{
+    let fColumns = [{
         title: "Dummy",
         dataKey: "dummy"
     }];
-    var fData = [];
-    var note = "NOTE: " + faker.lorem.paragraph(); // : null;
+    let fData = [];
+    let note = "NOTE: " + faker.lorem.paragraph(); // : null;
 
 
     if (note != null) {
@@ -357,8 +327,8 @@ document.getElementById('pdf').onclick = function () {
 
     }
 
-    var startyf = (note == null) ? 21 : doc.autoTable.previous.finalY + 1;
-    var fre = doc.autoTableHtmlToJson(document.getElementById('factivity'));
+    let startyf = (note == null) ? 21 : doc.autoTable.previous.finalY + 1;
+    let fre = doc.autoTableHtmlToJson(document.getElementById('factivity'));
 
     doc.autoTable(fre.columns, fre.data, {
         addPageContent: footer,
@@ -393,7 +363,7 @@ document.getElementById('pdf').onclick = function () {
     doc.setFontSize(10);
     doc.setTextColor(0);
 
-    var nts = doc.autoTableHtmlToJson(document.getElementById('visitNotes'));
+    let nts = doc.autoTableHtmlToJson(document.getElementById('visitNotes'));
     doc.autoTable(nts.columns, nts.data, {
         addPageContent: footer,
         theme: 'grid',
@@ -424,26 +394,20 @@ document.getElementById('pdf').onclick = function () {
 
 
     // Add lines for sifgnatures
-    var y1 = doc.autoTable.previous.finalY + 50;
-    var y2 = doc.autoTable.previous.finalY + 55.5;
+    let y1 = doc.autoTable.previous.finalY + 50;
+    let y2 = doc.autoTable.previous.finalY + 55.5;
     doc.setLineWidth(0.5);
     doc.setDrawColor(39, 40, 34);
-    // doc.line(7 , y1, 60, y1); // x,y,w,h
-    // doc.line(80 , y1, 133, y1); // x,y,w,h
-    // doc.line(153 , y1, 206, y1); // x,y,w,h
     doc.setFontSize(13);
-    // doc.text("DM", 28, y2);
-    // doc.text("SM", 103, y2);
-    // doc.text("Date", 175, y2);    
     doc.text("Store Visit Completed On", 7, y1);
     doc.setFontType("bold");
-    doc.text("January, 11 2019 by Clifton Brown", 60, y1);
+    doc.text("{Month Name}, {DD YYYY} by {CompletedBy}", 60, y1);
     //doc.line(60, y1+3, 170, y1+3); // x,y,w,h
     doc.setFontType("normal");
     doc.text("Feedback Received", 7, y1 + 40);
     doc.line(50, y1 + 43, 140, y1 + 43); // x,y,w,h
 
-    var smSignature = "";
+    let smSignature = "";
     if (smSignature != '') doc.addImage(smSignature, 'JPEG', 50, y1 + 7, 100, 35); // image,format,x,y,width,height
 
 
