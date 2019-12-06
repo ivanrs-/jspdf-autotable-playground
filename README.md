@@ -15,3 +15,5 @@ From HTML document generate a PDF usign jsPDF and autotable plugin
     A **General Notes** section will be placed at the end
   
   >All content is automatically generated using fakerjs. Min and Max number of values to display should be adjusted in pdf_play_table.js file
+
+  ![header image](https://github.com/ivanrs-/jspdf-autotable-playground/blob/master/preview1.png?raw=true)
