@@ -1,5 +1,7 @@
 # jspdf-autotable-playground
-From HTML document generate a PDF usign jsPDF and autotable plugin
+From HTML document generate a PDF usign jsPDF and autotable plugin.
+
+This is a playground test, using certain business rules for the document generation.
 
     - Uses semanticui, fakejs, jspdf, jspdfautotable
 
@@ -13,6 +15,7 @@ From HTML document generate a PDF usign jsPDF and autotable plugin
   
     Additionally a Store visit may have 1:N **Period and Quartely Activities** with Notes
     A **General Notes** section will be placed at the end
+  
   
   >All content is automatically generated using fakerjs. Min and Max number of values to display should be adjusted in pdf_play_table.js file
 
